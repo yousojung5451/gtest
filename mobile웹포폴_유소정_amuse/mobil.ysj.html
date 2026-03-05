@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/moblie.index.css">
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" href="favicon/favicon3.png">
+</head>
+<body>
+
+       <a href="#main" class="skip">본문 바로가기</a>
+
+<!----------------헤더--------------->
+<header id="header">
+    <h1>
+        <a href="#">
+            <img src="img/AMUSE_LOGO_png.png" alt="LOGO">
+        </a>
+    </h1>
+
+    <!-- 햄버거 -->
+    <a href="menu.html" class="icon s">
+        <img src="img/햄버거 메뉴_png.png" alt="메뉴">
+    </a>
+
+    <div class="right-icons">
+        <!-- 알림 -->
+        <a href="notice.html" class="icon r">
+            <img src="img/종 아이콘.png" alt="알림">
+        </a>
+
+        <!-- 장바구니 -->
+        <a href="cart.html" class="icon b">
+            <img src="img/장바구니 아이콘.png" alt="장바구니">
+        </a>
+    </div>
+</header>
+
+<!--------------- 검색 --------------->
+<div class="search-wrap">
+  <div class="search-box">
+
+      <!-- 슬라이드 -->
+      <div class="slide-container">
+          <div class="slide-track">
+              <div class="slide-item" data-link="search1.html">NEW 틴트 밤 키링 듀오</div>
+              <div class="slide-item" data-link="search2.html">바나나 립 오일 세트</div>
+              <div class="slide-item" data-link="search3.html">듀 파워 비건 쿠션 본품+리필</div>
+              
+          </div>
+      </div>
+
+      <!-- 실제 input (위에 겹쳐놓음) -->
+      <input type="text" class="real-search" id="searchInput">
+
+      <!-- 돋보기 -->
+      <div class="search-btn">
+          <img src="img/Search 돋보기.png" alt="검색">
+      </div>
+
+  </div>
+</div>
+
+<!----------------메인페이지- 메인배너--------------->
+
+<div id="main">
+  <div class="main-slider">
+
+    <div class="slides">
+      <img src="img/mein_img.png" class="slide active" alt="slide 1">
+       
+      <img src="img/mein_benner2.png" class="slide" alt="slide 2">
+      <img src="img/mein_benner3.png" class="slide" alt="slide 3">
+      <img src="img/mein_benner4..png" class="slide" alt="slide 4">
+      <img src="img/mein_benner5.png" class="slide" alt="slide 5">
+      
+    </div>
+<!-------------메인 이미지 양쪽 화살표 ---------------->
+    <div class="arrow left">&#10094;</div>
+    <div class="arrow right">&#10095;</div>
+
+    <!-- 우측상단 1/5  -->
+    <div class="page-indicator">
+      <span id="current">1 </span> / <span id="total"> 5</span>
+    </div>
+
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ===== 메인 슬라이더 JS ===== */
+const slides = document.querySelectorAll(".main-slider .slide");
+const dots = document.querySelectorAll(".main-slider .dot");
+const leftArrow = document.querySelector(".main-slider .arrow.left");
+const rightArrow = document.querySelector(".main-slider .arrow.right");
+const currentEl = document.getElementById("current");
+const totalEl = document.getElementById("total");
+
+let idx = 0;
+
+function syncTotal(){
+  if (totalEl) totalEl.textContent = String(slides.length);
+}
+
+function show(i){
+  if(!slides.length) return;
+
+  idx = (i + slides.length) % slides.length;
+
+  slides.forEach((s, k) => s.classList.toggle("active", k === idx));
+
+  // dots 개수가 슬라이드 수랑 다르면: 있는 만큼만 처리
+  dots.forEach((d, k) => d.classList.toggle("active", k === idx));
+
+  if (currentEl) currentEl.textContent = String(idx + 1);
+}
+
+syncTotal();
+show(0);
+
+if (rightArrow) rightArrow.addEventListener("click", () => show(idx + 1));
+if (leftArrow) leftArrow.addEventListener("click", () => show(idx - 1));
+
+dots.forEach((dot, k) => {
+  dot.addEventListener("click", () => show(k));
+});
+</script>
+
+<!----------------메인페이지-작은 카드메뉴 --------------->
+<section class="card-menu">
+  <h2 class="blind">바로가기 메뉴</h2>
+
+   <div class="card-list">
+
+    <a href="#">
+    <img src="img/카드메뉴1.png">
+    <span class="two-line">겨울 보습<br> 메이크업</span>
+    </a>
+
+    <a href="#"><img src="img/카드메뉴2.png"><span>NEW</span></a>
+    <a href="#"><img src="img/카드메뉴3.png"><span>BEST</span></a>
+
+    <a href="#">
+    <img src="img/카드메뉴4.PNG">
+    <span class="two-line">공식몰<br> 단독 구성</span>
+    </a>
+
+    <a href="#"><img src="img/카드메뉴5.png"><span>첫 구매 딜</span></a>
+
+    <a href="#">
+    <img src="img/카드메뉴6.png">
+    <span class="two-line">플친<br> 10% 쿠폰</span>
+    </a>
+
+    <a href="#"><img src="img/카드메뉴7.PNG"><span>멤버쉽</span></a>
+    <a href="#"><img src="img/카드메뉴8.png"><span>GOODS</span></a>
+  </div>
+</section>
+
+
+<!----------------메인페이지- 서브 배너 이미지 --------------->
+
+<section class="sub-banner">
+        <a href="#">
+            <img class="sub-banner__img" src="img/중간 배너 이미지.png" alt="중간 첫구매 혜택 배너">
+        </a>
+</section>
+
+<!----------------메인페이지- NEW 메뉴 1--------------->
+
+<section class="new-menu">
+  <h2 class="section-title">NEW</h2>
+
+  <div class="product-list">
+
+<!-- 1번째 제품 -->
+    <div class="product-card">
+      <a href="#">
+
+        <div class="img-wrap">
+          <img src="img/메인상품1.png" alt="바나나 립 오일">
+
+
+        </div>
+
+        <p class="product-name">
+          바나나 립 오일 <br> (9종 택 1)
+        </p>
+
+        <div class="price-line">
+          <span class="discount">20%</span>
+          <span class="sale-price">&#8361;14,400원</span>
+          <span class="origin-price">&#8361;17,000원</span>
+        </div>
+        
+       </a>
+
+        <div class="review-line">
+
+          <!-- 하트 -->
+          <button class="wish-btn" type="button">
+          <img src="img/메뉴-heart.png" alt="찜">
+          </button>
+
+          <!-- 장바구니 -->
+          <button class="wish-btn" type="button">
+          <img src="img/장바구니 아이콘2.png" alt="장바구니">
+          </button>
+
+          <!-- 리뷰 -->
+          <img src="img/리뷰-star.png" class="star-icon" alt="리뷰-star">
+          <span>5.0</span>
+          <span class="review-count">(485개 리뷰)</span>
+        </div>
+
+    </div>
+
+<!-- 2번째 제품 -->
+    <div class="product-card">
+      <a href="#">
+
+        <div class="img-wrap">
+          <img src="img/메인상품2.png" alt="바나나 립 오일 듀오 세트">
+
+
+        </div>
+
+        <p class="product-name">
+          바나나 립 오일<br> 듀오 세트
+        </p>
+
+        <div class="price-line">
+          <span class="discount">35%</span>
+          <span class="sale-price">&#8361;25,500원</span>
+          <span class="origin-price">&#8361;34,000원</span>
+        </div>
+
+      </a>
+
+        <div class="review-line">
+
+          <!-- 하트 -->
+          <button class="wish-btn" type="button">
+          <img src="img/메뉴-heart.png" alt="메뉴-좋아요">
+          </button>
+
+          <!-- 장바구니 -->
+          <button class="wish-btn" type="button">
+          <img src="img/장바구니 아이콘2.png" alt="장바구니">
+          </button>
+
+          <!-- 리뷰 -->
+          <img src="img/리뷰-star.png" class="star-icon" alt="리뷰-star">
+          <span>5.0</span>
+          <span class="review-count">(485개 리뷰)</span>
+        </div>
+
+    </div>
+
+<!-- 3번째 제품 -->
+    <div class="product-card">
+      <a href="#">
+
+        <div class="img-wrap">
+          <img src="img/메인상품3.png" alt="바나나 립 오일">
+
+
+        </div>
+
+        <p class="product-name">
+          바나나 립 오일<br> 3종 세트
+        </p>
+
+        <div class="price-line">
+          <span class="discount">55%</span>
+          <span class="sale-price">&#8361;33,100원</span>
+          <span class="origin-price">&#8361;51,000원</span>
+        </div>
+
+      </a>
+
+        <div class="review-line">
+
+          <!-- 하트 -->
+          <button class="wish-btn" type="button">
+          <img src="img/메뉴-heart.png" alt="메뉴-좋아요">
+          </button>
+
+          <!-- 장바구니 -->
+          <button class="wish-btn" type="button">
+          <img src="img/장바구니 아이콘2.png" alt="장바구니">
+          </button>
+
+          <!-- 리뷰 -->
+          <img src="img/리뷰-star.png" class="star-icon" alt="리뷰-star">
+          <span>5.0</span>
+          <span class="review-count">(485개 리뷰)</span>
+        </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!----------------메인페이지- BEST 메뉴---------------> 
+<section class="best-menu">
+  <h2 class="section-title">BEST</h2>
+
+  <div class="product-list">
+
+    <!-- 1 -->
+    <article class="product-card">
+      <a href="#">
+        <div class="img-wrap">
+          <img src="img/메인상품4.png" alt="젤핏 글로스 듀오 세트">
+        </div>
+
+        <p class="product-name">젤핏 글로스 <br>듀오 세트</p>
+
+        <div class="price-line">
+          <span class="discount">35%</span>
+          <span class="sale-price">&#8361;29,000원</span>
+          <span class="origin-price">&#8361;40,000원</span>
+        </div>
+
+        <div class="review-line">
+
+          <!-- 하트 -->
+          <button class="wish-btn" type="button">
+          <img src="img/메뉴-heart.png" alt="메뉴-좋아요">
+          </button>
+
+          <!-- 장바구니 -->
+          <button class="wish-btn" type="button">
+          <img src="img/장바구니 아이콘2.png" alt="장바구니">
+          </button>
+
+          <!-- 리뷰 -->
+          <img src="img/리뷰-star.png" class="star-icon" alt="리뷰-star">
+          <span>4.9</span>
+          <span class="review-count">(2,318개 리뷰)</span>
+        </div>
+      </a>
+    </article>
+
+    <!-- 2 -->
+    <article class="product-card">
+      <a href="#">
+        <div class="img-wrap">
+          <img src="img/메인상품5.png" alt="듀 파워 비건 쿠션 본품+리필2ea">
+        </div>
+
+        <p class="product-name">듀 파워 비건 쿠션 본품+리필2ea</p>
+
+        <div class="price-line">
+          <span class="discount">50%</span>
+          <span class="sale-price">&#8361;38,900원</span>
+          <span class="origin-price">&#8361;78,000원</span>
+        </div>
+
+        <div class="review-line">
+
+
+          <!-- 하트 -->
+          <button class="wish-btn" type="button">
+          <img src="img/메뉴-heart.png" alt="메뉴-좋아요">
+          </button>
+
+          <!-- 장바구니 -->
+          <button class="wish-btn" type="button">
+          <img src="img/장바구니 아이콘2.png" alt="장바구니">
+          </button>
+
+          <!-- 리뷰 -->
+          <img src="img/리뷰-star.png" class="star-icon" alt="리뷰-star">
+          <span>4.8</span>
+          <span class="review-count">(6,050개 리뷰)</span>
+        </div>
+      </a>
+    </article>
+
+    <!-- 3 -->
+    <article class="product-card">
+      <a href="#">
+        <div class="img-wrap">
+          <img src="img/메인상품6.png" alt="비건 쿠션 리필 2EA세트">
+        </div>
+
+        <p class="product-name">비건 쿠션 리필 2EA세트</p>
+
+        <div class="price-line">
+          <span class="discount">30%</span>
+          <span class="sale-price">&#8361;28,000원</span>
+          <span class="origin-price">&#8361;40,000원</span>
+        </div>
+
+        <div class="review-line">
+
+
+          <!-- 하트 -->
+          <button class="wish-btn" type="button">
+          <img src="img/메뉴-heart.png" alt="메뉴-좋아요">
+          </button>
+
+          <!-- 장바구니 -->
+          <button class="wish-btn" type="button">
+          <img src="img/장바구니 아이콘2.png" alt="장바구니">
+          </button>
+
+          <!-- 리뷰 -->
+          <img src="img/리뷰-star.png" class="star-icon" alt="리뷰-star">
+          <span>4.9</span>
+          <span class="review-count">(107개 리뷰)</span>
+        </div>
+
+      </a>
+    </article>
+
+  </div>
+</section>
+
+<!------------------------- 카테고리 BEST ----------------------->
+<section class="best-menu">
+  <h2 class="section-title">카테고리 BEST</h2>
+
+  <div class="product-list">
+
+    <!-- 1번째 제품 -->
+    <div class="product-card">
+      <a href="#">
+        <div class="img-wrap">
+          <img src="img/메인상품5.png" alt="듀 파워 비건 쿠션 본품+리필2ea">
+        </div>
+
+        <p class="product-name">
+          듀 파워 비건 쿠션 <br> 본품+리필2ea
+        </p>
+
+        <div class="price-line">
+          <span class="discount">50%</span>
+          <span class="sale-price">&#8361;38,900원</span>
+          <span class="origin-price">&#8361;78,000원</span>
+        </div>
+      </a>
+
+     
+      <div class="review-line">
+        <!-- 하트 -->
+        <button class="wish-btn" type="button">
+          <img src="img/메뉴-heart.png" alt="찜">
+        </button>
+
+        <!-- 장바구니 -->
+        <button class="wish-btn" type="button">
+          <img src="img/장바구니 아이콘2.png" alt="장바구니">
+        </button>
+
+        <img src="img/리뷰-star.png" class="star-icon" alt="별점">
+        <span>4.8</span>
+        <span class="review-count">(6,050개 리뷰)</span>
+      </div>
+    </div>
+
+
+    <!-- 2 -->
+    <article class="product-card">
+      <a href="#">
+
+        <div class="img-wrap">
+          <img src="img/메인상품7.png" alt="맑은 수분 365 비건 선크림">
+        </div>
+
+        <p class="product-name">맑은 수분 365 비건 선크림</p>
+
+        <div class="price-line">
+          <span class="discount">20%</span>
+          <span class="sale-price">&#8361;19,200원</span>
+          <span class="origin-price">&#8361;30,600원</span>
+        </div>
+
+        <div class="review-line">
+
+
+          <!-- 하트 -->
+          <button class="wish-btn" type="button">
+          <img src="img/메뉴-heart.png" alt="메뉴-좋아요">
+          </button>
+
+          <!-- 장바구니 -->
+          <button class="wish-btn" type="button">
+          <img src="img/장바구니 아이콘2.png" alt="장바구니">
+          </button>
+
+          <!-- 리뷰 -->
+          <img src="img/리뷰-star.png" class="star-icon" alt="리뷰-star">
+          <span>5.0</span>
+          <span class="review-count">(131개 리뷰)</span>
+        </div>
+      </a>
+    </article>
+
+    <!-- 3 -->
+    <article class="product-card">
+      <a href="#">
+
+        <div class="img-wrap">
+          <img src="img/메인상품8.png" alt="아이 컬러 팔레트 (5종 택 1)">
+        </div>
+
+        <p class="product-name">아이 컬러 팔레트 (5종 택 1)</p>
+
+        <div class="price-line">
+          <span class="discount">10%</span>
+          <span class="sale-price">&#8361;30,600원</span>
+          <span class="origin-price">&#8361;34,000원</span>
+        </div>
+
+        <div class="review-line">
+
+          <!-- 하트 -->
+          <button class="wish-btn" type="button">
+          <img src="img/메뉴-heart.png" alt="메뉴-좋아요">
+          </button>
+
+          <!-- 장바구니 -->
+          <button class="wish-btn" type="button">
+          <img src="img/장바구니 아이콘2.png" alt="장바구니">
+          </button>
+
+          <!-- 리뷰 -->
+          <img src="img/리뷰-star.png" class="star-icon" alt="리뷰-star">
+          <span>4.9</span>
+          <span class="review-count">(8,444개 리뷰)</span>
+        </div>
+        
+      </a>
+    </article>
+  </div>
+</section>
+
+<!------------------------- 공식몰 SET ------------------------->
+<section class="set-menu">
+  <h2 class="section-title">공식몰 SET</h2>
+
+  <div class="product-list">
+
+    <div class="product-card">
+      <a href="#">
+        <div class="img-wrap">
+          <img src="img/메인상품3.png" alt="바나나 립 오일 9종세트">
+        </div>
+
+        <p class="product-name">바나나 립 오일 9종세트</p>
+
+        <div class="price-line">
+          <span class="discount">45%</span>
+          <span class="sale-price">&#8361;84,100원</span>
+          <span class="origin-price">&#8361;153,000원</span>
+        </div>
+      </a>
+
+      <div class="review-line">
+
+        <button class="wish-btn" type="button">
+          <img src="img/메뉴-heart.png" alt="찜">
+        </button>
+
+        <button class="wish-btn" type="button">
+          <img src="img/장바구니 아이콘2.png" alt="장바구니">
+        </button>
+
+        <img src="img/리뷰-star.png" class="star-icon" alt="별점">
+        <span>5.0</span>
+        <span class="review-count">(491개 리뷰)</span>
+    </div>
+    </div>
+
+        <!-- 2 -->
+    <article class="product-card">
+      <a href="#">
+        <div class="img-wrap">
+          <img src="img/메인상품9.png" alt="에어리 포어 커버 쿠션 본품+리필2ea">
+        </div>
+
+        <p class="product-name">에어리 포어 커버 쿠션 본품+리필2ea</p>
+
+        <div class="price-line">
+          <span class="discount">49%</span>
+          <span class="sale-price">&#8361;38,900원</span>
+          <span class="origin-price">&#8361;78,000원</span>
+        </div>
+
+        <div class="review-line">
+
+
+          <!-- 하트 -->
+          <button class="wish-btn" type="button">
+          <img src="img/메뉴-heart.png" alt="메뉴-좋아요">
+          </button>
+
+          <!-- 장바구니 -->
+          <button class="wish-btn" type="button">
+          <img src="img/장바구니 아이콘2.png" alt="장바구니">
+          </button>
+
+          <!-- 리뷰 -->
+          <img src="img/리뷰-star.png" class="star-icon" alt="리뷰-star">
+          <span>4.8</span>
+          <span class="review-count">(6,050개 리뷰)</span>
+        </div> <!--  review-line -->
+      </a>
+    </article>
+
+    <!-- 3 -->
+    <article class="product-card">
+      <a href="#">
+        <div class="img-wrap">
+          <img src="img/메인상품10.png" alt="틴트 밤 키링 듀오 세트">
+        </div>
+
+        <p class="product-name">틴트 밤 키링 듀오 세트</p>
+
+        <div class="price-line">
+          <span class="discount">25%</span>
+          <span class="sale-price">&#8361;22,500원</span>
+          <span class="origin-price">&#8361;30,000원</span>
+        </div>
+
+        <div class="review-line">
+
+
+          <!-- 하트 -->
+          <button class="wish-btn" type="button">
+          <img src="img/메뉴-heart.png" alt="메뉴-좋아요">
+          </button>
+
+          <!-- 장바구니 -->
+          <button class="wish-btn" type="button">
+          <img src="img/장바구니 아이콘2.png" alt="장바구니">
+          </button>
+
+          <!-- 리뷰 -->
+          <img src="img/리뷰-star.png" class="star-icon" alt="리뷰-star">
+          <span>4.9</span>
+          <span class="review-count">(1,217개 리뷰)</span>
+        </div>
+        </a>
+        </article>
+  </div>
+</section>
+
+<!---------------------------비건 ------------------------------->
+
+<section class="vegan-banner" aria-label="AMUSE VEGAN 안내">
+  <div class="vegan-top">
+    <h2>I'M VEGAN</h2>
+
+    <a href="#" class="vegan-sticker">Wevegan</a>
+
+      <p>AMUSE는 클린 & 비건뷰티를 지향합니다.<br>
+         지구를 생각하는 뷰티 어뮤즈는 동물 실험은 물론 <br>
+         동물성 원료를 사용하지 않는 비건 뷰티브랜드입니다. <br>
+         어뮤즈는 오늘도 착한 아름다움입니다.</p>
+       
+         <div  class="vegan-logos" aria-label="인증로고">
+          <img src="img/vegan_logo1.png" class="logo1" alt="Wevegan">
+          <img src="img/vegan_logo2.png" class="logo2" alt="PETA">
+          <img src="img/vegan_logo3.png" class="logo3" alt="certification">
+          <img src="img/vegan_logo4.png" class="logo4" alt="cruelty free">
+         </div>
+  </div>
+
+  <div class="vegan-bottom">
+    <img src="img/vegan_water.png" alt="물결 배경 이미지">
+  </div>
+</section>
+
+<!-------------------------AMUSE 이미지 그리드------------------------>
+
+<section class="amuse-grid">
+  <div class="amuse-head">
+    <h2 class="amuse-title">AMUSE</h2>
+    <span class="amuse-tag">#공식</span>
+  </div>
+
+  <div class="amuse-gallery">
+    <a href="#" class="g g1"><img src="img/insta1.jpg" alt="AMUSE 이미지"></a>
+    <a href="#" class="g g2"><img src="img/insta2.jpg" alt="AMUSE 이미지"></a>
+    <a href="#" class="g g3"><img src="img/insta8.jpg" alt="AMUSE 이미지"></a>
+    <a href="#" class="g g4"><img src="img/insta9.jpg" alt="AMUSE 이미지"></a>
+    <a href="#" class="g g5"><img src="img/insta10.jpg" alt="AMUSE 이미지"></a>
+    <a href="#" class="g g6"><img src="img/insta3.jpg" alt="AMUSE 이미지"></a>
+    <a href="#" class="g g7"><img src="img/insta4.jpg" alt="AMUSE 이미지"></a>
+    <a href="#" class="g g8"><img src="img/insta5.jpg" alt="AMUSE 이미지"></a>
+  </div>
+
+  <div class="amuse-more">
+    <a href="#" class="more-btn">More</a>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="footer-top">
+    <h2 class="foot-logo">AMUSE</h2>
+
+    <div class="cs">
+      <p class="tel">고객센터 1833- 7689</p>
+      <p class="time">
+        월요일 - 금요일 오전 9시 ~ 18시 <br>
+        점심시간 12시 ~ 13시<br>
+        토요일 일요일 휴무
+      </p>
+    </div>
+
+    <ul class="foot-menu">
+      <li><a href="#">ABOUT</a></li>
+      <li><a href="#">MTPAGE</a></li>
+      <li><a href="#">STORE</a></li>
+      <li><a href="#">Q & A</a></li>
+    </ul>
+
+    <div class="partner">
+      <p>도매 / 파트너쉽</p>
+      <P>help_amuse@amusemakeup.com</P>
+    </div>
+
+    <div class="sns">
+      <a href="#"><img src="img/sns1.png" alt="instagram"></a>
+      <a href="#"><img src="img/sns2.png" alt="tiktok"></a>
+      <a href="#"><img src="img/sns3.png" alt="kakao"></a>
+      <a href="#"><img src="img/sns4.png" alt="twitter"></a>
+    </div>
+
+    <div class="footer-info">
+
+    <p class="policy">
+      이용약관 | 개인정보처리방침 | 사업자정보확인
+    </p>
+
+    <p>
+      주식회사 어뮤즈코리아<br>
+      대표이사 이승민<br>
+      주소 서울 강남구 도산대로 138 10층<br>
+      고객센터 1833-7689
+    </p>
+
+    <p class="copy">
+      COPYRIGHT ⓒ AMUSE ALL RESERVED.
+    </p>
+
+  </div>
+  </div>
+
+</footer>
+
+<nav class="bottom-nav">
+
+  <a href="#">
+    <img src="img/icon_home.png" class="icon-home">
+    <span>홈</span>
+  </a>
+
+  <a href="#">
+    <img src="img/icon_map.png" class="icon-map">
+    <span>매장</span>
+  </a>
+
+  <a href="#">
+    <img src="img/icon_heart.png" class="icon-heart">
+    <span>위시</span>
+  </a>
+
+  <a href="#">
+    <img src="img/icon_user.png" class="icon-user">
+    <span>마이</span>
+  </a>
+
+</nav>
+
+
+
+</body>
+
+</html>
