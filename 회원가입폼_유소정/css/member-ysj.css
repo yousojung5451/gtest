@@ -1,0 +1,382 @@
+@charset "utf-8";
+
+/* 기본 */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  color: #222;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+img{
+  display: block;
+}
+
+button,
+input{
+  font-family: inherit;
+}
+
+/* 스킵 */
+.skip{
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+.skip:focus{
+  left: 10px;
+  top: 10px;
+  z-index: 9999;
+  background: #000;
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+/* 헤더 */
+#header{
+  width: 100%;
+  height: 82px;
+  margin: 0 auto;
+  position: relative;
+  background: #fff;
+  border-bottom: 1px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#header h1 img{
+  height: 38px;
+}
+
+#header .a,
+#header .b{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+}
+
+#header .a{
+  left: 10px;
+}
+
+#header .b{
+  right: 10px;
+}
+
+/* 메인 */
+#main{
+  width: 100%;
+  padding: 0 20px 40px;
+}
+
+/* 회원가입 전체 박스 */
+.join{
+  width: 100%;
+  margin: 60px  auto 40px;
+  max-width: 760px;
+  background: #fff;
+  border: 1.5px solid #000000;
+  border-radius: 5px;
+  padding: 50px 50px ;
+}
+
+.join h2{
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 34px;
+  color: #111;
+}
+
+/* 섹션 */
+.basic,
+.extra,
+.agree{
+  margin-bottom: 34px;
+}
+
+/* fieldset */
+.field_basic,
+.field_extra,
+.field_agree{
+  border: 0;
+}
+
+.field_basic legend,
+.field_extra legend,
+.field_agree legend{
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 16px;
+}
+
+/* 한 줄 */
+.info_row{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.info_row:last-child{
+  margin-bottom: 0;
+}
+
+/* 왼쪽 제목칸 */
+.info_title{
+  width: 110px;
+  min-width: 110px;
+  height: 34px;
+  border: 1px solid #d8d8d8;
+  border-right: 0;
+  background: #f3f3f3;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111;
+}
+
+.info_title label{
+  font-size: 13px;
+}
+
+.info_title span{
+  color: #2d65ff;
+  margin-left: 2px;
+}
+
+/* 오른쪽 입력칸 */
+.info_input{
+  flex: 1;
+}
+
+.info_input input{
+  width: 100%;
+  height: 34px;
+  border: 1px solid #d8d8d8;
+  background: #fff;
+  padding: 0 10px;
+  font-size: 13px;
+  color: #222;
+  outline: none;
+}
+
+.info_input input::placeholder{
+  color: #8c8c8c;
+  font-size: 11px;
+}
+
+.info_input input:focus,
+.birth_input:focus{
+  border-color: #999;
+}
+
+/* 추가정보 */
+.birth{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 34px;
+  border: 1px solid #d8d8d8;
+  padding: 0 10px;
+}
+
+.birth_input{
+  width: 180px;
+  height: 24px;
+  border: 1px solid #d8d8d8;
+  padding: 0 8px;
+  font-size: 13px;
+  outline: none;
+  background: #fff;
+}
+
+.birth label{
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #111;
+}
+
+.birth input[type="radio"]{
+  width: 14px;
+  height: 14px;
+}
+
+/* 약관 */
+.field_agree label{
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.field_agree label:last-child{
+  margin-bottom: 0;
+}
+
+.field_agree input[type="checkbox"]{
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* 버튼 */
+.btn_area{
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.btn_area button{
+  width: 92px;
+  height: 34px;
+  border: 0;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn_area .reset{
+  background: #ededed;
+  color: #222;
+}
+
+.btn_area .submit{
+  background: #000;
+  color: #fff;
+}
+
+
+
+@media (max-width: 480px){
+
+  #main{
+    padding: 30px 10px 24px;
+  }
+
+  .join{
+    width: 100%;
+    max-width: 100%;
+    margin: 50px auto 50px;
+    padding: 10px 10px ;
+  }
+
+  .join h2{
+    font-size: 22px;
+    margin-bottom: 22px;
+  }
+
+  .field_basic legend,
+  .field_extra legend,
+  .field_agree legend{
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .basic,
+  .extra,
+  .agree{
+    margin-bottom: 24px;
+  }
+
+  .info_row{
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .info_title{
+    width: 78px;
+    min-width: 78px;
+    height: 30px;
+    padding-left: 6px;
+    font-size: 11px;
+  }
+
+  .info_title label{
+    font-size: 10px;
+  }
+
+  .info_input input{
+    height: 30px;
+    padding: 0 6px;
+    font-size: 11px;
+  }
+
+  .info_input input::placeholder{
+    font-size: 8px;
+    letter-spacing: -0.2px;
+  }
+
+  .birth{
+    flex: 1;
+    min-height: 30px;
+    gap: 8px;
+    padding: 0 6px;
+  }
+
+  .birth_input{
+    width: 120px;
+    height: 22px;
+    padding: 0 6px;
+    font-size: 11px;
+  }
+
+  .birth label{
+    font-size: 11px;
+    gap: 2px;
+  }
+
+  .birth input[type="radio"]{
+    width: 12px;
+    height: 12px;
+  }
+
+  .field_agree label{
+    gap: 6px;
+    margin-bottom: 10px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .field_agree input[type="checkbox"]{
+    width: 12px;
+    height: 12px;
+  }
+
+  .btn_area{
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .btn_area button{
+    width: 74px;
+    height: 30px;
+    font-size: 11px;
+  }
+}
+
